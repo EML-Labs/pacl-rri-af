@@ -1,0 +1,25 @@
+# @package _global_
+
+defaults:
+  - /dataset: iridia
+  - /model: model
+  - _self_
+
+
+checkpoint:
+  path: checkpoints/best_model.pth
+
+dataloder:
+  _target_: torch.utils.data.DataLoader
+  batch_size: 128
+  num_workers: 4
+  pin_memory: True
+  persistent_workers: True
+
+clf:
+  _target_: sklearn.linear_model.LogisticRegression
+  C: 1.0
+  max_iter: 5000
+
+tester:
+  _target_: src.Utils.Tester.Tester

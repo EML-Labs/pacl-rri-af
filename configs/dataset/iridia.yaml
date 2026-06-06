@@ -1,0 +1,20 @@
+# @package _global_
+classification:
+  minimum_af_length: 3600 # 1 hour
+  minimum_sr_length: 14400 # 4 hours
+  minimum_sr_time_to_be_considered_for_scaler : 3600 # 1 hour
+
+data:
+  window_size: 200
+  stride: 50
+
+dataset:
+  _target_: src.Dataset.ClassificationDataset
+  processed_dataset_path: Data/
+  minimum_af_length: ${classification.minimum_af_length}
+  minimum_sr_length: ${classification.minimum_sr_length}
+  minimum_sr_time_to_be_considered_for_scaler: ${classification.minimum_sr_time_to_be_considered_for_scaler}
+  window_size: ${data.window_size}
+  stride: ${data.stride}
+
+
